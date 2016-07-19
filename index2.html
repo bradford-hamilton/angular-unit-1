@@ -25,7 +25,7 @@
     <div ng-controller="madLibsController">
       <h1>Please fill out the following to generate your mad lib!</h1>
       <label for="boysName">Boys Name</label>
-      <input type="text" ng-model='boysName' id='boysName'>
+      <input type="text" ng-model='name' id='boysName'>
       <br>
       <label for="Adjective">Adjective</label>
       <input type="text" ng-model='adjective' id='adjective'>
@@ -44,7 +44,7 @@
       <br>
       <label for="verb">Verb ending in "s"</label>
       <input type="text" ng-model='verb' id='verb'>
-      <button ng-click="showMe=true">Generate!</button>
+      <button ng-click="showMe=true; submit()">Generate!</button>
         <div>
           <h3 ng-show='showMe'>
             I'm in love with <span>{{ boysName | uppercase }}</span>.<br>
@@ -58,6 +58,109 @@
           </h3>
           <button ng-click="showMe=false; playAgain()">Play Again!</button>
         </div>
+    </div>
+    <hr><hr><hr>
+    <!-- buggy code -->
+    <div ng-controller="buggyExerciseParent">
+      {{ message }}
+      <div ng-if="momName === Lisa">
+        Secret Message: <input type="text" ng-model="message">
+      </div>
+    </div>
+    <!-- fix for buggy code with new controller -->
+    <div ng-controller="buggyExerciseFix">
+      {{ view.message }}
+      <div ng-if="momName === Lisa">
+        Secret Message: <input type="text" ng-model="view.message">
+      </div>
+    </div>
+    <hr><hr><hr>
+    <div ng-controller="numberPicker">
+      <h3>The number is: {{view.number}}</h3>
+      <button ng-click="pickRandomNumber()">Pick Random Number</button>
+      <!-- the number changes because we made the pickRandomNumber function
+      execute on the ng-click event, which then changes the view.number rendering -->
+    </div>
+    <br>
+    <div ng-controller='wordReverser'>
+      <h3>Word Reverser</h3>
+      <input type="text" ng-model='view.word'>
+      <p>Your word is: {{ view.word }}</p>
+      <button ng-click='reverseWord(view.word)'>Reverse!</button>
+    </div>
+    <br><br>
+    <h2>Ping Pong Score Keeper</h2>
+    <div ng-controller='ping-pong'>
+      <div id="left" ng-click='player1Increment()' ng-class='{ green: view.player1Score >= 11, red: view.player2Score >= 11 }'>
+        <h3>Player 1</h3>
+        <h1>{{ view.player1Score }}</h1>
+        <br>
+        <h3 ng-show='view.show1'>Serving</h3>
+      </div>
+      <div id="right" ng-click='player2Increment()' ng-class='{ green: view.player2Score >= 11, red: view.player1Score >= 11 }'>
+        <h3 >Player 2</h3>
+        <h1>{{ view.player2Score }}</h1>
+        <br>
+        <h3 ng-show='view.show2'>Serving</h3>
+      </div>
+      <br>
+      <button type="button" ng-click='reset()'>Reset!</button>
+    </div>
+    <br><br>
+    <h1>Mouse Enter Exercise</h1>
+    <div ng-controller='mouse-enter'>
+      <h3>The div was entered {{view.enterCount}} times</h3>
+      <div class='mouse-enter-div' ng-style="view.myStyle" class="divbox" ng-mouseenter="view.enterCount = view.enterCount + 1; view.myStyle={'background-color': view.randomColor() }">
+      </div>
+      <p>{{view.colorArray}}</p>
+      <button type="button" ng-click='replay()'>Replay Colors!</button>
+    </div>
+    <br><br><br>
+    <h2>Address Form Exercise</h2>
+    <div ng-controller='formExercise1'>
+      <form ng-submit="submitAddressForm()">
+        <label for="street1">Street Line 1: </label>
+        <input id='street1' type="text" ng-model="addressForm.street1"><br>
+        <label for="street2">Street Line 2: </label>
+        <input id='street2' type="text" ng-model="addressForm.street2"><br>
+        <label for="city">City: </label>
+        <input id='city' type="text" ng-model="addressForm.city"><br>
+        <label for="state">State: </label>
+        <input id='state' type="text" ng-model="addressForm.state"><br>
+        <label for="zip">Zip: </label>
+        <input id='zip' type="text" ng-model="addressForm.zip"><br>
+        <input type="submit">
+      </form>
+      Street Line 1: {{ addressFormShow.street1 }}<br>
+      Street Line 2: {{ addressFormShow.street2 }}<br>
+      City: {{ addressFormShow.city }}<br>
+      State: {{ addressFormShow.state }}<br>
+      Zip: {{ addressFormShow.zip }}<br>
+    </div>
+    <br><br><br>
+    <h1>Contact Form Exercise</h1>
+    <div ng-controller='contactApp'>
+      <form ng-submit="submitContactForm()">
+        <label for="name">Name: </label>
+        <input id='name' type="text" ng-model="contactForm.name"><br>
+        <label for="email">Email: </label>
+        <input id='email' type="text" ng-model="contactForm.email"><br>
+        <label for="phone">Phone: </label>
+        <input id='phone' type="text" ng-model="contactForm.phone"><br>
+        <input type="submit">
+      </form>
+      <div>
+        <br>
+        <label>Search: <input ng-model="searchText"></label><br><br><br>
+        <tr><th>Name</th><th>Phone</th><th>Name</th></tr>
+        <table>
+          <tr ng-repeat='person in contacts | filter:searchText '>
+            <td>{{ person.name }}</td>
+            <td>{{ person.email }}</td>
+            <td>{{ person.phone }}</td>
+          </tr>
+        </table>
+      </div>
     </div>
 
   </body>

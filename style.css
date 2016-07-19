@@ -27,3 +27,38 @@ img {
 .yellow {
   color: #e74a27;
 }
+
+#left {
+  height: 25rem;
+  width: 25rem;
+  border: 1px solid black;
+  display: inline-block;
+  background-color: #31a1fc;
+}
+
+#right {
+  height: 25rem;
+  width: 25rem;
+  border: 1px solid black;
+  display: inline-block;
+  background-color: #31a1fc;
+}
+
+.blue {
+  background-color: #31a1fc;
+}
+
+.green {
+  background-color: #14a81f !important;
+}
+
+.red {
+  background-color: #e73c3c !important;;
+}
+
+.mouse-enter-div {
+  height: 30rem;
+  width: 30rem;
+  border: 6px solid black;
+  display: inline-block;
+}

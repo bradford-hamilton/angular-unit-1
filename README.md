@@ -77,3 +77,12 @@
 4. In Express, what are Angular controllers most analogous to?
   * They sort of remind me of routes? You pass a first argument in to match to then a higher-order/callback with things to do inside of them
 ### 07-into-to-scope
+1. What is $rootScope?
+  * Every application has a single root scope. All other scopes are descendant scopes of the root scope. Scopes provide separation between the model and the view, via a mechanism for watching the model for changes. They also provide event emission/broadcast and subscription facility.
+2. Explain how $scope is passed from a parent to child controller
+  * https://rclayton.silvrback.com/parent-child-controller-communication
+3. List five built in directives that create their own scope
+  * By default a directive shares whatever scope was defined above it. This is great link too http://codetunnel.io/isolate-scopes-explained/
+4. "Scope becomes tricky when you try to 2 way data bind to a primitive defined on the parent scope from inside the child scope" - what         does this mean?
+  * https://github.com/angular/angular.js/wiki/Understanding-Scopes
+### 08-intro-to-events
