@@ -1,0 +1,64 @@
+<!-- These examples DO use app.js controllers -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>More Angular Intro</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script src="./app.js"></script>
+  <body ng-app='firstApp'>
+
+    <div ng-controller="MyFirstController">
+      <h1>My name is: {{ name }}</h1>
+      <input ng-model="name" type="text" placeholder="What is your name">
+    </div>
+
+    <div ng-controller="ExercisesController">
+      <h3>My favorite colors are {{ favColor }}</h3>
+      <h3>There are {{ secondsInACentury | number }} seconds in a century!</h3>
+      <h3>It is currently {{ rightNow | date: 'fullDate' }}</h3>
+    </div>
+
+    <div ng-controller="madLibsController">
+      <h1>Please fill out the following to generate your mad lib!</h1>
+      <label for="boysName">Boys Name</label>
+      <input type="text" ng-model='boysName' id='boysName'>
+      <br>
+      <label for="Adjective">Adjective</label>
+      <input type="text" ng-model='adjective' id='adjective'>
+      <br>
+      <label for="pluralNoun1">Plural Noun</label>
+      <input type="text" ng-model='pluralNoun1' id='pluralNoun1'>
+      <br>
+      <label for="pluralNoun2">Plural Noun</label>
+      <input type="text" ng-model='pluralNoun2' id='pluralNoun2'>
+      <br>
+      <label for="insect">Insect</label>
+      <input type="text" ng-model='insect' id='insect'>
+      <br>
+      <label for="pluralNoun3">Plural Noun</label>
+      <input type="text" ng-model='pluralNoun3' id='pluralNoun3'>
+      <br>
+      <label for="verb">Verb ending in "s"</label>
+      <input type="text" ng-model='verb' id='verb'>
+      <button ng-click="showMe=true">Generate!</button>
+        <div>
+          <h3 ng-show='showMe'>
+            I'm in love with <span>{{ boysName | uppercase }}</span>.<br>
+            He's so <span>{{ adjective | uppercase }}</span>!<br>
+            He has big flat <span>{{ pluralNoun1 | uppercase }}</span>,<br>
+            and when our <span>{{ pluralNoun2 | uppercase }}</span><br>
+            meet, I get <span>{{ insect | uppercase }}</span><br>
+            in my stomach. I've fallen for him like a ton of <span>{{ pluralNoun3 | uppercase }}</span>,<br>
+            and he <span>{{ verb | uppercase }}</span><br>
+            for me, too. But I think he's got another girlfriend. What should I do?<br>
+          </h3>
+          <button ng-click="showMe=false; playAgain()">Play Again!</button>
+        </div>
+    </div>
+
+  </body>
+</html>

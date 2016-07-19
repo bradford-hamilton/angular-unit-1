@@ -1,0 +1,163 @@
+<!-- This is a bunch of differenct examples WITHOUT using any controllers -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Angular Intro</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <body ng-app>
+    <hr>
+    <p>{{1 + 6}}<p>
+    <p>Say something to the world <input type="text" ng-model="greeting" ng-init="greeting='Hello, '"></p>
+    <p>{{ greeting }} world!</p>
+    <hr>
+    <input ng-model='name' type="text" placeholder="What is your name?" ng-init="name='Bradford'">
+    <h1>My name is {{ name }}</h1>
+    <br>
+    <select ng-model='animal' name="select">
+      <option value="Dogs">Dogs</option>
+      <option value="Cats" >Cats</option>
+      <option value="Dogs and Cats">Dogs and Cats</option>
+      <option value="Neither">Neither</option>
+    </select>
+    <h3>I love {{ animal }}!</h3>
+    <hr>
+    <p>US: {{3.14159265359 | currency}}</p>
+    <p>Euro: {{(3.14159265359 | number:2) + "€"}}</p>
+    <input type="text" ng-model='talk' placeholder='Say something'>
+    <h3>Yelling: {{ talk | uppercase }}</h3>
+    <h3>Whispering: {{ talk | lowercase }}</h3>
+    <p>{{3.14159265359 | number:3}}</p>
+    <p>{{3.14159265359 | number:6}}</p>
+    <p>{{3.14159265359 | number:1}}</p>
+    <h2>How many digits of pi do you want?</h2>
+    <select ng-model='pi' name="select">
+      <option value="1">1</option>
+      <option value="2" >2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+    </select>
+    <p>{{ 3.1415927 | number: pi }}</p>
+    <br>
+    <h2>Super Useful Tip Calculator</h2>
+    <p>How much did your meal cost? <input type="text" ng-model='mealCost'></p>
+    <p>How much do you want to tip?</p>
+    <select ng-model='tip' name="select">
+      <option value="0.1">10%</option>
+      <option value="0.15">15%</option>
+      <option value="0.2" >20%</option>
+      <option value="0.25">25%</option>
+    </select>
+    <h3>Subtotal: {{ mealCost | currency }}</h3>
+    <h3>Tip: {{ mealCost*tip | currency }}</h3>
+    <br>
+    <div>{{ this }}</div>
+    <br>
+    <label for="boysName">Boys Name</label>
+    <input type="text" ng-model='boysName' id='boysName'>
+    <br>
+    <label for="Adjective">Adjective</label>
+    <input type="text" ng-model='adjective' id='adjective'>
+    <br>
+    <label for="pluralNoun1">Plural Noun</label>
+    <input type="text" ng-model='pluralNoun1' id='pluralNoun1'>
+    <br>
+    <label for="pluralNoun2">Plural Noun</label>
+    <input type="text" ng-model='pluralNoun2' id='pluralNoun2'>
+    <br>
+    <label for="insect">Insect</label>
+    <input type="text" ng-model='insect' id='insect'>
+    <br>
+    <label for="pluralNoun3">Plural Noun</label>
+    <input type="text" ng-model='pluralNoun3' id='pluralNoun3'>
+    <br>
+    <label for="verb">Verb ending in "s"</label>
+    <input type="text" ng-model='verb' id='verb'>
+    <h3>
+        I'm in love with <span>{{ boysName | uppercase }}</span>.<br>
+        He's so <span>{{ adjective | uppercase }}</span>!<br>
+        He has big flat <span>{{ pluralNoun1 | uppercase }}</span>,<br>
+        and when our <span>{{ pluralNoun2 | uppercase }}</span><br>
+        meet, I get <span>{{ insect | uppercase }}</span><br>
+        in my stomach. I've fallen for him like a ton of <span>{{ pluralNoun3 | uppercase }}</span>,<br>
+        and he <span>{{ verb | uppercase }}</span><br>
+        for me, too. But I think he's got another girlfriend. What should I do?<br>
+    </h3>
+    <hr>
+    <ul ng-init="names=['Harry', 'Ron', 'Hermione', 'Sirius', 'Hedwig', 'Tonks']">
+      <li ng-repeat='name in names'>
+        {{ name }}
+       </li>
+    </ul>
+    <ul ng-init="symbols=['&#9824;', '&#9827;', '&#9829;', '&#9830;']">
+      <li ng-repeat='symbol in symbols'>
+        {{ symbol }}
+       </li>
+    </ul>
+    <ul ng-init="numbers=[1, 1, 2, 5, 6, 9, 9, 9]">
+      <li ng-repeat='number in numbers track by $index'>
+        {{ number }}
+       </li>
+    </ul>
+    <ul ng-init="humans=[{ name: 'Pawel' },  { name: 'Bradford' }, { name: 'Bennett' }, { name: 'Alex' }]">
+      <li ng-repeat='human in humans'>
+        <p>{{ human.name }}</p>
+       </li>
+    <ul ng-init="person=[{ name: 'Bradford', height: 6, friendly: true }]">
+      <li ng-repeat='obj in person'>
+        <p>Name: {{ obj.name }}</p>
+        <p>Height: {{ obj.height }}</p>
+        <p>Friendly: {{ obj.friendly }}</p>
+      </li>
+    </ul>
+    <br>
+    <h1>Sign up Page</h1>
+    <input id='sign-up' type="password" ng-model='password' ng-class='{ valid: password.length > 6, invalid: password.length <= 6 }'>
+    <h5 ng-class='{ valid: password.length > 6, invalid: password.length <= 6 }'>Your password is {{ password.length }} characters</h5>
+    <p ng-class='{ hide: password.length > 6, show: password.length <= 6 }'>Password isn't long enough!</p>
+    <button type="button" ng-show='password.length > 6'>Submit</button>
+    <br><br>
+    <h1>Camera Shop</h1>
+    <select name='select' ng-model='filterBy'>
+      <option value='price'>Price</option>
+      <option value='rating'>Rating</option>
+    </select>
+    <ul ng-init="array=[
+                  {
+                    title: 'Nikon D3100 DSLR',
+                    image: 'http://ecx.images-amazon.com/images/I/713u2gDQqML._SX522_.jpg',
+                    rating: 3.4,
+                    price: 369.99,
+                    onSale: true
+                  },
+                  {
+                    title: 'Canon EOS 70D',
+                    image: 'http://ecx.images-amazon.com/images/I/81U00AkAUWL._SX522_.jpg',
+                    rating: 2.0,
+                    price: 1099.0,
+                    onSale: false
+                  },
+                  {
+                    title: 'Nikon D810A',
+                    image:'http://ecx.images-amazon.com/images/I/91wtXIfLl2L._SX522_.jpg',
+                    rating: 4.2,
+                    price: 3796.95,
+                    onSale: true
+                  }
+                ]">
+      <li ng-repeat="obj in array | orderBy: filterBy ">
+        <h4>{{ obj.title }}</h4>
+        <h4 ng-class="{ yellow: obj.onSale }">Price: {{ obj.price | currency }} <span ng-show='obj.onSale === true' ng-class="{ yellow: obj.onSale }">ON SALE!!</span></h4>
+        <h4>Rating: {{ obj.rating }}</h4>
+        <h4><img ng-src="{{ obj.image }}" alt="Camera Picture"></h4>
+      </li>
+    </ul>
+    <hr>
+  </body>
+</html>
