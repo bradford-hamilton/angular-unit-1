@@ -1,0 +1,58 @@
+/* THIS IS CSS FOR SECOND PART OF EXERCISE use commenting to only use this one or the other */
+
+.ng-enter {
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+.ng-leave {
+  transition:0.5s linear all;
+  opacity:1;
+}
+
+.ng-leave.ng-leave-active {
+  opacity:0;
+}
+
+/*This is for our hiding (this is not a class from ng-animate)*/
+.ng-hide {
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+/* ____----____----____----____----____----____----____----____----____----____----____----____----____----____----____ */
+/* ____----____----____----____----____----____----____----____----____----____----____----____----____----____----____ */
+/* ____----____----____----____----____----____----____----____----____----____----____----____----____----____----____ */
+/* ____----____----____----____----____----____----____----____----____----____----____----____----____----____----____ */
+
+/* THIS IS CSS FOR SECOND PART OF EXERCISE use commenting to only use this one or the other */
+.ng-enter {
+  transition:0.4s ease all;
+  opacity:0;
+  transform:translateX(-100%);
+}
+
+.ng-enter.ng-enter-active {
+  opacity:1;
+  transform:translateX(0);
+}
+
+.ng-leave {
+  transition:0.4s ease all;
+  opacity:1;
+  transform:translateX(0);
+}
+
+.ng-leave.ng-leave-active {
+  opacity:0;
+  transform:translateX(-100%);
+}
+
+.ng-enter-stagger, .ng-leave-stagger {
+  transition-delay: 0.2s;
+  transition-duration:0;
+}

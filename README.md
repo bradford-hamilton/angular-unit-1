@@ -103,3 +103,19 @@
   This is really useful for validation. The reason for $dirty was always to avoid showing validation responses until the user has actually visited a certain control. But, by using only the $dirty property, the user wouldn't get validation feedback unless they actually altered the value. So, an $invalid field still wouldn't show the user a prompt if the user didn't change/interact with the value. If the user entirely ignored a required field, everything looked OK.
 7. What does blurred mean? (research the blur event)
   * Blurred is after you click into an input and leave it.
+### 10-animation
+1. What is ng-animate? What does it do for us? What does it not to for us?
+  * The ngAnimate module provides support for CSS-based animations (keyframes and transitions) as well as JavaScript-based animations via callback hooks. Animations are not enabled by default, however, by including ngAnimate the animation hooks are enabled for an Angular app.
+2. What is the difference between the .ng-enter and .ng-enter-active classes?
+  * For CSS transitions, the transition code must be defined within the starting CSS class (in this case .ng-enter). The destination class is what the transition will animate towards. If for example we wanted to create animations for leave and move (ngRepeat triggers move) then we can do so using the same CSS naming conventions:
+  `.fade.ng-leave {
+      transition:0.5s linear all;
+      opacity:1;
+    }
+    .fade.ng-leave.ng-leave-active {
+      opacity:0;
+    }`
+3. What is a staggered animation?
+  * A Staggering animation is a collection of animations that are issued with a slight delay in between each successive operation resulting in a curtain-like effect. The ngAnimate module (versions >=1.2) supports staggering animations and the stagger effect can be performed by creating a ng-EVENT-stagger CSS class and attaching that class to the base CSS class used for the animation. The style property expected within the stagger class can either be a transition-delay or an animation-delay property (or both if your animation contains both transitions and keyframe animations).Staggering animations work by default in ngRepeat (so long as the CSS class is defined). Outside of ngRepeat, to use staggering animations on your own, they can be triggered by firing multiple calls to the same event on $animate. However, the restrictions surrounding this are that each of the elements must have the same CSS className value as well as the same parent element. A stagger operation will also be reset if one or more animation frames have passed since the multiple calls to $animate were fired.
+4. What is animate.css?
+  * Animate.css is to transitions what Bootstrap is to layout, which means it comes with a number of pre-built and easy to use styles. Animate uses keyframe animations. which specify the start, end, and in-between points of what an element should look like, and although Animate is not tied to Angular, keyframes make Angular animations easier because there is no need to specify the “preparation” phase. Also, complicated animations roll up into a single keyframe name.
