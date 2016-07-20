@@ -86,3 +86,20 @@
 4. "Scope becomes tricky when you try to 2 way data bind to a primitive defined on the parent scope from inside the child scope" - what         does this mean?
   * https://github.com/angular/angular.js/wiki/Understanding-Scopes
 ### 08-intro-to-events
+  * No questions
+### 09-form-validation
+1. When does a form/input have a property of $valid? What class accompanies this property?
+  * True if all of the containing forms and controls are valid.
+2. When does a form/input have a property of $invalid? What class accompanies this property?
+  * True if at least one containing control or form is invalid.
+3. When does a form/input have a property of $pristine? What class accompanies this property?
+  * {boolean} $pristine True if user has not interacted with the form yet.
+4. When does a form/input have a property of $dirty? What class accompanies this property?
+  * {boolean} $dirty True if user has already interacted with the form.
+5. When does a form/input have a property of $touched? What class accompanies this property?
+  * {boolean} $touched True if control has lost focus.
+6. More on touched/untouched and pristine/dirty
+  * $pristine/$dirty tells you whether the user actually changed anything, while $touched/$untouched tells you whether the user has merely been there/visited.
+  This is really useful for validation. The reason for $dirty was always to avoid showing validation responses until the user has actually visited a certain control. But, by using only the $dirty property, the user wouldn't get validation feedback unless they actually altered the value. So, an $invalid field still wouldn't show the user a prompt if the user didn't change/interact with the value. If the user entirely ignored a required field, everything looked OK.
+7. What does blurred mean? (research the blur event)
+  * Blurred is after you click into an input and leave it.
